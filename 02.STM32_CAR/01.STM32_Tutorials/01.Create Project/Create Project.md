@@ -195,3 +195,20 @@ Include Paths：将工程所有文件夹路径添加进去（MDK-ARM文件夹不
 ST-LINK驱动所在安装位置：C:\Keil_v5\ARM\STLink
 ```
 
+## ARM Compiler
+
+从MDK5.37版本开始，AC5(ARMCC)编译器不再默认安装，需要独立安装。
+
+```
+使用标准库创建的工程需要用到该编译器
+```
+
+解压ARMCompiler_5.zip文件并安装C:\Keil_v5\ARM\ARMCC文件夹下（ARMCC文件夹需要自己新建）。
+
+### 添加AC5编译器
+
+`Manage Progect Ltems` → `Folders/Extensions` → `Use ARM Compiler` → 添加AC5编译器
+
+### 选择编译器
+
+`Options for Target...` → `Target`  → `ARM Compiler`  → 选择AC5编译器

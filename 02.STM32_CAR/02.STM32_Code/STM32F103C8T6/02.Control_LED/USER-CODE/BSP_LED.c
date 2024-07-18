@@ -11,5 +11,5 @@ void LED_Init(void)
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
 	GPIO_Init(LED_Info[0].GPIO_Port, &GPIO_InitStructure);
 	
-	GPIO_WriteBit(LED_Info[0].GPIO_Port, LED_Info[0].GPIO_Pin, Bit_RESET);
+	GPIO_WriteBit(LED_Info[0].GPIO_Port, LED_Info[0].GPIO_Pin, Bit_SET);
 }
