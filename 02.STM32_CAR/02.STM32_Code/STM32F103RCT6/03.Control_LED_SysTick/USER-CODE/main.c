@@ -10,6 +10,6 @@ int main()
 	while(1){
 		Delay_Ms(1000);
 		Delay_Us(1000000);
-		GPIO_WriteBit(LED[0].GPIO_Port, LED[0].GPIO_Pin, (BitAction)!GPIO_ReadOutputDataBit(LED[0].GPIO_Port, LED[0].GPIO_Pin));
+		GPIO_WriteBit(LED_Port, LED_Pin, (BitAction)!GPIO_ReadOutputDataBit(LED_Port, LED_Pin));
 	}
 }

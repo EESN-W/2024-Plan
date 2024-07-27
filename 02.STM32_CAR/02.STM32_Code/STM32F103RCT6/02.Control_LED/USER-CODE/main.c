@@ -7,7 +7,7 @@ int main()
 	
 	while(1){
 
-		GPIO_WriteBit(LED[0].GPIO_Port, LED[0].GPIO_Pin, Bit_SET);
+		GPIO_WriteBit(LED_Port, LED_Pin, Bit_SET);
 		
 	}
 }

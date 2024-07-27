@@ -21,27 +21,6 @@
 #define	Press_Button		1
 #define	Release_Button	0
 
-typedef struct {
-	uint32_t GPIO_Clock;
-	GPIO_TypeDef* GPIO_Port;
-	uint16_t GPIO_Pin;
-	GPIOMode_TypeDef GPIO_Mode;
-	uint8_t GPIO_PortSource;
-	uint8_t GPIO_PinSource;
-	uint32_t EXTI_Line;
-  EXTIMode_TypeDef EXTI_Mode;
-  EXTITrigger_TypeDef EXTI_Trigger;
-	uint8_t NVIC_IRQChannel;
-  uint8_t NVIC_IRQChannelPreemptionPriority;
-  uint8_t NVIC_IRQChannelSubPriority;
-} KEY_EXTI_Info;
-
-static KEY_EXTI_Info KEY_EXTI[] = {
-	{KEY2_Clock, KEY2_Port, KEY2_Pin, KEY2_Mode, KEY2_EXTI_PortSource, KEY2_EXTI_PinSource, 
-	KEY2_EXTI_Line,KEY2_EXTI_Mode, KEY2_EXTI_Trigger, KEY2_NVIC_IRQChannel,
-	KEY2_NVIC_IRQChannelPreemptionPriority, KEY2_NVIC_IRQChannelSubPriority}
-};
-
 void KEY_EXTI_Init(void);
 
 #endif
