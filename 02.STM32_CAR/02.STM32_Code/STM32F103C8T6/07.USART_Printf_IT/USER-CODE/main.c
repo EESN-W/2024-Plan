@@ -1,9 +1,10 @@
 #include "stm32f10x.h"
 #include "BSP_LED.h"
 #include "BSP_KEY.h"
-#include "BSP_UASRT.h"
+#include "BSP_USART.h"
 #include "BSP_SysTick.h"
 #include "BSP_KEY_EXTI.h"
+#include "BSP_USART_IT.h"
 
 int main()
 {
@@ -11,7 +12,8 @@ int main()
 	LED_Init();
 	KEY_Init();
 	KEY_EXTI_Init();
-	UASRT1_Init();
+	USART1_Init();
+	USART2_IT_Init();
 	
 	printf("Hello!\n");
 	

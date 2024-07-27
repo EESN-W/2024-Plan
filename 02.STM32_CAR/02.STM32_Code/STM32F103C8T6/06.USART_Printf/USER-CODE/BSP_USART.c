@@ -1,20 +1,20 @@
-#include "BSP_UASRT.h"
+#include "BSP_USART.h"
 
-void UASRT1_Init(void)
+void USART1_Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 	USART_InitTypeDef USART_InitStructure;
 	
-	RCC_APB2PeriphClockCmd(UASRT1_Clock, ENABLE);
+	RCC_APB2PeriphClockCmd(USART1_Clock, ENABLE);
 
-	GPIO_InitStructure.GPIO_Pin = UASRT1_Pin_Tx;
-	GPIO_InitStructure.GPIO_Speed = UASRT1_Speed;
-	GPIO_InitStructure.GPIO_Mode = UASRT1_Mode_Tx;
-	GPIO_Init(UASRT1_Port, &GPIO_InitStructure);
+	GPIO_InitStructure.GPIO_Pin = USART1_Pin_Tx;
+	GPIO_InitStructure.GPIO_Speed = USART1_Speed;
+	GPIO_InitStructure.GPIO_Mode = USART1_Mode_Tx;
+	GPIO_Init(USART1_Port, &GPIO_InitStructure);
 	
-	GPIO_InitStructure.GPIO_Pin = UASRT1_Pin_Rx;
-	GPIO_InitStructure.GPIO_Mode = UASRT1_Mode_Rx;
-	GPIO_Init(UASRT1_Port, &GPIO_InitStructure);
+	GPIO_InitStructure.GPIO_Pin = USART1_Pin_Rx;
+	GPIO_InitStructure.GPIO_Mode = USART1_Mode_Rx;
+	GPIO_Init(USART1_Port, &GPIO_InitStructure);
 	
 	USART_InitStructure.USART_BaudRate = USART1_BaudRate;
 	USART_InitStructure.USART_WordLength = USART1_WordLength;
@@ -22,9 +22,9 @@ void UASRT1_Init(void)
 	USART_InitStructure.USART_Parity = USART1_Parity;
 	USART_InitStructure.USART_Mode = USART1_Mode;
 	USART_InitStructure.USART_HardwareFlowControl = USART1_HardwareFlowControl;
-	USART_Init(USART1, &USART_InitStructure);
+	USART_Init(USART1_Com, &USART_InitStructure);
 	
-	USART_Cmd(USART1, ENABLE);
+	USART_Cmd(USART1_Com, ENABLE);
 }
 
 int fputc(int ch, FILE *f)

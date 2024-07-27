@@ -420,14 +420,24 @@
               <FilePath>..\USER-CODE\BSP_KEY_EXTI.h</FilePath>
             </File>
             <File>
-              <FileName>BSP_UASRT.c</FileName>
+              <FileName>BSP_USART.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\USER-CODE\BSP_UASRT.c</FilePath>
+              <FilePath>..\USER-CODE\BSP_USART.c</FilePath>
             </File>
             <File>
-              <FileName>BSP_UASRT.h</FileName>
+              <FileName>BSP_USART.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\USER-CODE\BSP_UASRT.h</FilePath>
+              <FilePath>..\USER-CODE\BSP_USART.h</FilePath>
+            </File>
+            <File>
+              <FileName>BSP_USART_IT.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER-CODE\BSP_USART_IT.c</FilePath>
+            </File>
+            <File>
+              <FileName>BSP_USART_IT.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\USER-CODE\BSP_USART_IT.h</FilePath>
             </File>
             <File>
               <FileName>BSP_SysTick.c</FileName>
