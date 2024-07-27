@@ -151,10 +151,10 @@ void SysTick_Handler(void)
 
 void EXTI0_IRQHandler(void)
 {
-	if(EXTI_GetITStatus(KEY_EXTI[0].EXTI_Line) != RESET)
+	if(EXTI_GetITStatus(KEY2_EXTI_Line) != RESET)
 	{
-		GPIO_WriteBit(LED[0].GPIO_Port, LED[0].GPIO_Pin, (BitAction)!GPIO_ReadOutputDataBit(LED[0].GPIO_Port, LED[0].GPIO_Pin));
-		EXTI_ClearITPendingBit(KEY_EXTI[0].EXTI_Line);
+		GPIO_WriteBit(LED_Port, LED_Pin, (BitAction)!GPIO_ReadOutputDataBit(LED_Port, LED_Pin));
+		EXTI_ClearITPendingBit(KEY2_EXTI_Line);
 	}
 }
 

@@ -10,12 +10,12 @@ int main()
 	LED_Init();
 	KEY_Init();
 	KEY_EXTI_Init();
-
+	
 	while(1)
 	{
-		if(KEY_Check(KEY[0].GPIO_Port, KEY[0].GPIO_Pin) == Press_Button)
+		if(KEY_Check(KEY_Port, KEY_Pin) == Press_Button)
 		{
-			GPIO_WriteBit(LED[0].GPIO_Port, LED[0].GPIO_Pin, (BitAction)!GPIO_ReadOutputDataBit(LED[0].GPIO_Port, LED[0].GPIO_Pin));
+			GPIO_WriteBit(LED_Port, LED_Pin, (BitAction)!GPIO_ReadOutputDataBit(LED_Port, LED_Pin));
 		}
 	}
 }

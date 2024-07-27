@@ -12,17 +12,6 @@
 #define	Press_Button		1
 #define	Release_Button	0
 
-typedef struct {
-	uint32_t GPIO_Clock;
-	GPIO_TypeDef* GPIO_Port;
-	uint16_t GPIO_Pin;
-	GPIOMode_TypeDef GPIO_Mode;
-} KEY_Info;
-
-static KEY_Info KEY[] = {
-	{KEY_Clock, KEY_Port, KEY_Pin, KEY_Mode}
-};
-
 void KEY_Init(void);
 int KEY_Check(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
 
