@@ -24,6 +24,7 @@
 #include "stm32f10x_it.h"
 #include "BSP_KEY_EXTI.h"
 #include "BSP_SysTick.h"
+#include "BSP_USART.h"
 #include "BSP_LED.h"
 
 /** @addtogroup STM32F10x_StdPeriph_Template
@@ -36,6 +37,11 @@
 /* Private variables ---------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
+
+uint8_t uData_Buffer[5];
+uint8_t uRx_Buffer[5];
+uint8_t uData_Flag = 0;
+uint8_t uRx_Index = 0;
 
 /******************************************************************************/
 /*            Cortex-M3 Processor Exceptions Handlers                         */
@@ -162,9 +168,48 @@ void USART2_IRQHandler(void)
 {
 	if(USART_GetITStatus(USART2, USART_IT_RXNE) != RESET)
 	{
-		USART_SendData(USART2, USART_ReceiveData(USART2));
+		uRx_Buffer[uRx_Index] = USART_ReceiveData(USART2);
+
+		if(uRx_Buffer[uRx_Index] == 0xEF)
+		{
+			memset(uRx_Buffer, 0, sizeof(uRx_Buffer));
+			uRx_Buffer[0] = 0xEF;
+			uRx_Index = 1;
+			uData_Flag = 1;
+		}
+		else if(uRx_Buffer[uRx_Index] == 0xFE && uData_Flag == 1)
+		{
+			if(uRx_Buffer[1] + uRx_Buffer[2] == uRx_Buffer[3])
+			{
+				memset(uData_Buffer, 0, sizeof(uData_Buffer));
+				memcpy(uData_Buffer, uRx_Buffer, sizeof(uRx_Buffer));
+				memset(uRx_Buffer, 0, sizeof(uRx_Buffer));
+				printf("Check right!\n");
+				printf("Function Bit: %d\n", uData_Buffer[1]);
+				printf("Data Bit: %d\n", uData_Buffer[2]);
+				printf("Check Bit: %d\n", uData_Buffer[3]);
+			}
+			else
+			{
+				printf("Check Fail!\n");
+			}
+			memset(uRx_Buffer, 0, sizeof(uRx_Buffer));
+			uRx_Index = 0;
+			uData_Flag = 2;
+		}
+		else if(uRx_Buffer[uRx_Index] != 0xFE && uData_Flag == 1)
+		{
+			uRx_Index++;
+			if(uRx_Index >= 5)
+			{
+				uRx_Index = 0;
+				uData_Flag = 0;
+				memset(uRx_Buffer, 0, sizeof(uRx_Buffer));
+			}
+		}
 	}
 }
+
 
 /**
   * @brief  This function handles PPP interrupt request.
