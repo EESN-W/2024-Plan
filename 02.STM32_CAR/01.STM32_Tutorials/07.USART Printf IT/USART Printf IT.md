@@ -3,9 +3,9 @@
 教程简要说明使用USART2中断接发数据。
 
 ```
-程序启动USART1打印Hello!
-KEY和KEY2保留按键控制LED功能，KEY按键按下控制KED并打印LED Toggle
-USART2接收并发送相同数据
+USART1:程序启动打印Hello，KEY按键触发打印LED Toggle
+USART2:接收并发送相同数据
+KEY/KEY2:控制LED
 ```
 
 ## 开发思路

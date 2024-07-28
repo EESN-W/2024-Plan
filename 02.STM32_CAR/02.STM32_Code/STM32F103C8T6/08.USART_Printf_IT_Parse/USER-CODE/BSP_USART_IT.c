@@ -18,6 +18,7 @@ void USART2_IT_Init(void)
 	GPIO_InitStructure.GPIO_Mode = USART2_Mode_Rx;
 	GPIO_Init(USART2_Port, &GPIO_InitStructure);
 	
+	NVIC_PriorityGroupConfig(USART2_NVIC_PriorityGroupConfig);
 	NVIC_InitStructure.NVIC_IRQChannel = USART2_NVIC_IRQChannel;
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = USART2_NVIC_IRQChannelPreemptionPriority;
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = USART2_NVIC_IRQChannelSubPriority;

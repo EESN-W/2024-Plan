@@ -3,7 +3,8 @@
 教程简要说明使用USART1重定向printf发送数据。
 
 ```
-程序启动打印Hello!，KEY和KEY2保留按键控制LED功能，KEY按键按下控制KED并打印LED Toggle
+USART1:程序启动打印Hello，KEY按键触发打印LED Toggle
+KEY/KEY2:控制LED
 ```
 
 ## 开发思路
