@@ -22,6 +22,7 @@ void USART1_IT_Init(void)
 	GPIO_InitStructure.GPIO_Mode = USART1_Mode_Rx;	// 配置引脚模式为浮空输入
 	GPIO_Init(USART1_Port, &GPIO_InitStructure);		// 初始化GPIO结构体
 	
+	// 配置NVIC结构体参数
 	NVIC_PriorityGroupConfig(USART1_NVIC_PriorityGroupConfig);			// 配置中断群组:0
 	NVIC_InitStructure.NVIC_IRQChannel = USART1_NVIC_IRQChannel;		// 配置中断通道:USART1中断
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = USART1_NVIC_IRQChannelPreemptionPriority;	// 配置抢占优先级:0x00

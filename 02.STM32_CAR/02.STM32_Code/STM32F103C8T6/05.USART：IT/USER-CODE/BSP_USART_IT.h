@@ -35,7 +35,7 @@
 #define USART1_HardwareFlowControl		USART_HardwareFlowControl_None
 #define USART1_Mode										(USART_Mode_Rx | USART_Mode_Tx)
 
-void USART1_IT_Init(void);				// USART1初始化
+void USART1_IT_Init(void);		// USART1初始化
 int fputc (int c, FILE *pt);	// Printf重定向
 
 #endif
