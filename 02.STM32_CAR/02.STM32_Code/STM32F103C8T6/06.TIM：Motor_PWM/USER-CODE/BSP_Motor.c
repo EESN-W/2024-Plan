@@ -11,7 +11,6 @@ void Motor_Init(void)
 	
 	// 使能GPIOA时钟
 	RCC_APB2PeriphClockCmd(Motor_GPIO_Clock, ENABLE);
-	
 	// 使能GPIOB时钟
 	RCC_APB2PeriphClockCmd(Motor_PWMA_Clock1, ENABLE);
 	// 使能Motor_PWMA时钟
