@@ -23,14 +23,14 @@ int main()
 		for(uMotorSpeed = 0; uMotorSpeed < 100; uMotorSpeed++)
 		{
 			TIM_SetCompare3(TIM3, uMotorSpeed);
-			Delay_Ms(100);
+			Delay_Ms(500);
 		}
-		Delay_Ms(5000);
+		Delay_Ms(10000);
 		for(uMotorSpeed = 100; uMotorSpeed > 0; uMotorSpeed--)
 		{
 			TIM_SetCompare3(TIM3, uMotorSpeed);
-			Delay_Ms(100);
+			Delay_Ms(500);
 		}
-		Delay_Ms(5000);
+		Delay_Ms(10000);
 	}
 }

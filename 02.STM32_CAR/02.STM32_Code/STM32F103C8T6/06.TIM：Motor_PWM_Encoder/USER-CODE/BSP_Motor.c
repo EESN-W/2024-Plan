@@ -52,6 +52,8 @@ void Motor_Encoder_Init(void)
 {
 	// 定义GPIO结构体
 	GPIO_InitTypeDef GPIO_InitStructure;
+	// 定义TIM_IC结构体
+	TIM_ICInitTypeDef TIM_ICInitStructure;
 	// 定义TIM_Base结构体
 	TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
 	
@@ -61,9 +63,9 @@ void Motor_Encoder_Init(void)
 	RCC_APB1PeriphClockCmd(Motor_Encoder_Clock2, ENABLE);
 	
 	// 配置GPIO结构体参数
-	GPIO_InitStructure.GPIO_Pin 	= Motor_Encoder_Pin;		// 配置GPIO引脚
-	GPIO_InitStructure.GPIO_Mode 	= Motor_Encoder_Mode;		// 配置引脚模式为浮空输入
-	GPIO_Init(Motor_Encoder_Port, &GPIO_InitStructure);		// 初始化GPIO结构体
+	GPIO_InitStructure.GPIO_Pin 	= Motor_Encoder_Pin;				// 配置GPIO引脚
+	GPIO_InitStructure.GPIO_Mode 	= Motor_Encoder_GPIO_Mode;	// 配置引脚模式为浮空输入
+	GPIO_Init(Motor_Encoder_Port, &GPIO_InitStructure);				// 初始化GPIO结构体
 	
 	// 配置TIM_Base结构体参数
 	TIM_TimeBaseStructure.TIM_Period = Motor_Encoder_Period;								// 配置定时器周期:100-1
@@ -73,7 +75,11 @@ void Motor_Encoder_Init(void)
 	TIM_TimeBaseInit(Motor_Encoder_Com, &TIM_TimeBaseStructure);           	// 初始化TIM_Base结构体参数
 	
 	// 配置定时器的编码器模式和输入捕获极性
-	TIM_EncoderInterfaceConfig(Motor_Encoder_Com, TIM_EncoderMode_TI12, TIM_ICPolarity_Rising, TIM_ICPolarity_Rising);
+	TIM_EncoderInterfaceConfig(Motor_Encoder_Com, Motor_Encoder_Mode, Motor_Encoder_IC1Polarity, Motor_Encoder_IC2Polarity);
+	
+	TIM_ICStructInit(&TIM_ICInitStructure);	// TIM_IC结构体初始化
+  TIM_ICInitStructure.TIM_ICFilter = Motor_Encoder_ICFilter;	// 配置输入捕获信号的滤波器系数
+  TIM_ICInit(Motor_Encoder_Com, &TIM_ICInitStructure);	// 初始化TIM_IC结构体参数
 	
 	TIM_SetCounter(Motor_Encoder_Com , 0);	// 定时器计数值清零
 	TIM_Cmd(Motor_Encoder_Com, ENABLE);			// 使能Motor_Encoder

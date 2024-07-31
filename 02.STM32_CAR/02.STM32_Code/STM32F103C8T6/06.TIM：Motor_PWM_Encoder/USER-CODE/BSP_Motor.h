@@ -52,7 +52,7 @@
 #define Motor_Encoder_Pin						(GPIO_Pin_6 | GPIO_Pin_7)
 #define Motor_PWMA_Mode							GPIO_Mode_AF_PP
 #define Motor_GPIO_Mode							GPIO_Mode_Out_PP
-#define Motor_Encoder_Mode					GPIO_Mode_IN_FLOATING
+#define Motor_Encoder_GPIO_Mode			GPIO_Mode_IN_FLOATING
 #define Motor_PWMA_Speed						GPIO_Speed_50MHz
 #define Motor_GPIO_Speed						GPIO_Speed_50MHz
 #define Motor_PWMA_Port							GPIOB
@@ -72,6 +72,11 @@
 #define Motor_PWMA_OutputState			TIM_OutputState_Enable
 #define Motor_PWMA_Pulse						0
 #define Motor_PWMA_OCPolarity				TIM_OCPolarity_High
+
+#define Motor_Encoder_Mode					TIM_EncoderMode_TI12
+#define Motor_Encoder_IC1Polarity		TIM_ICPolarity_Rising
+#define Motor_Encoder_IC2Polarity		TIM_ICPolarity_Rising
+#define Motor_Encoder_ICFilter			10
 
 #define STBY_HIGH 							GPIO_WriteBit(GPIOA, GPIO_Pin_1, Bit_SET)
 #define STBY_LOW 								GPIO_WriteBit(GPIOA, GPIO_Pin_1, Bit_RESET)

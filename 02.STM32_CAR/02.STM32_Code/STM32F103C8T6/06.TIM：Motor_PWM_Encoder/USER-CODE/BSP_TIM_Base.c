@@ -29,6 +29,4 @@ void TIM2_Init(void)
 	TIM_ITConfig(TIM2_Com, TIM2_IT_Source, ENABLE);			// 使能TIM2中断
 
 	TIM_Cmd(TIM2_Com, ENABLE);		// 使能TIM2
-	
-//	RCC_APB1PeriphClockCmd(TIM2_Clock, DISABLE);
 }
