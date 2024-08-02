@@ -143,8 +143,8 @@ void SysTick_Handler(void)
 
 void TIM1_UP_IRQHandler(void)
 {
-	static unsigned int uEncoderACounter = 0;
-	static unsigned int uEncoderBCounter = 0;
+	static int16_t iEncoderACounter = 0;
+	static int16_t iEncoderBCounter = 0;
 	
 	if(TIM_GetITStatus(TIM1, TIM_IT_Update) != RESET)
 	{
@@ -152,9 +152,9 @@ void TIM1_UP_IRQHandler(void)
 		if(uTimeCounter == 100)
 		{
 			uTimeCounter = 0;
-			uEncoderACounter = TIM_GetCounter(TIM3);
-			uEncoderBCounter = TIM_GetCounter(TIM4);
-			printf("Motor_A_Speed = %d Motor_B_Speed = %d\n",uEncoderACounter/22, uEncoderBCounter/22);	// Motor_Speed = (uEncoderCounter*60)/(4*11*30)
+			iEncoderACounter = TIM_GetCounter(TIM3);
+			iEncoderBCounter = TIM_GetCounter(TIM4);
+			printf("Motor_A_Speed = %d Motor_B_Speed = %d\n",iEncoderACounter/22, iEncoderBCounter/22);	// Motor_Speed = (iEncoderCounter*60)/(4*11*30)
 			TIM_SetCounter(TIM3, 0);
 			TIM_SetCounter(TIM4, 0);
 		}

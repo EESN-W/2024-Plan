@@ -143,7 +143,7 @@ void SysTick_Handler(void)
 
 void TIM2_IRQHandler(void)
 {
-	static unsigned int uEncoderCounter = 0;
+	static int16_t iEncoderCounter = 0;
 	
 	if(TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)
 	{
@@ -151,8 +151,8 @@ void TIM2_IRQHandler(void)
 		if(uTimeCounter == 100)
 		{
 			uTimeCounter = 0;
-			uEncoderCounter = TIM_GetCounter(TIM4);
-			printf("Motor_Speed = %d\n",uEncoderCounter/22);	// Motor_Speed = (uEncoderCounter*60)/(4*11*30)
+			iEncoderCounter = TIM_GetCounter(TIM4);
+			printf("Motor_Speed = %d\n",iEncoderCounter/22);	// Motor_Speed = (iEncoderCounter*60)/(4*11*30)
 			TIM_SetCounter(TIM4, 0);
 		}
 		TIM_ClearITPendingBit(TIM2 , TIM_FLAG_Update);

@@ -37,8 +37,8 @@
 /* Exported functions ------------------------------------------------------- */
 
 extern unsigned int uTimeCounter;
-extern unsigned int uEncoderACounter;
-extern unsigned int uEncoderBCounter;
+extern int16_t iEncoderACounter;
+extern int16_t iEncoderBCounter;
 
 void NMI_Handler(void);
 void HardFault_Handler(void);
