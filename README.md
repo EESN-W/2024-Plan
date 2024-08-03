@@ -6,3 +6,6 @@
 | 02.STM32_CAR    | STM32开发板：多功能小车 | 待更新 |
 | 03.ROS_CAR      | ROS开发：ROS小车        | 待更新 |
 
+微信公众号：EESN
+
+![Wechat](Wechat.png)
